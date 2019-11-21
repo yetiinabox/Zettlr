@@ -31,6 +31,10 @@ module.exports = function (string) {
   let ss = date.getSeconds()
   if (ss <= 9) ss = '0' + ss
 
+  // import uuidv4
+  const uuidv4 = require('uuid/v4')
+  let zki_uuid = uuidv4();
+
   // Now generate the id by replacing all placeholders in the pattern
   string = string.replace(/%Y/g, yyyy)
   string = string.replace(/%M/g, mm)
@@ -38,6 +42,8 @@ module.exports = function (string) {
   string = string.replace(/%h/g, hh)
   string = string.replace(/%m/g, m)
   string = string.replace(/%s/g, ss)
+  string = string.replace(/%uuid4/g, zki_uuid)
+
 
   return string
 }
